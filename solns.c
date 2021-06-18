@@ -1,71 +1,97 @@
 /* Enter your solutions in this file */
 #include <stdio.h>
-int max(int number[] , int size){
- int max = number[0];
-  For(int i=1;i<=1;i++)
-    If(number[i]>max)
-      {
-        max=number[i];
-      }
-     Return max;
-}
-int min(int number[] , int size){
- int min = number[0];
-  For(int i=1;i<=1;i++)
-    If(number[i]<min)
-      {
-        min=number[i];
-      }
-     Return min;
-}
-float Average(int a[], int n){
-   float avg=0.0;
-   float sum=0.0;
-   for (int i=0;i<n;++i){
-      sum+=a[i];
-     }
-   avg =(float)(sum)/n;
-  return avg;
+
+int max(const int num[],int n){
+	int Max=arr[0];
+	for(int i=0;i<n;i++){
+		if(num[i]>Max){
+			Max=num[i];
+		}
+	}
+	return Max;
 }
 
-int mode(int a[],int n) {
-   int mode = 0, maxCount = 0, i, j;
-
-   for (i = 0; i < n; ++i) {
-      int count = 0;
-      
-      for (j = 0; j < n; ++j) {
-         if (a[j] == a[i])
-         ++count;
-      }
-      
-      if (count > maxCount) {
-         maxCount = count;
-         mode = a[i];
-      }
-   }
-
-   return mode;
+int min(const int num[],int n){
+	int Min=arr[0];
+	for(int i=0;i<n;i++){
+		if(num[i]<Min){
+			Min=num[i];
+		}
+	}
+	return Min;
 }
-int Factors(int n, int a[]){
-   int x=0,y=0,fac=0;
-   while (n>1){
-     for (int i=2;i<=n;++i){
-        for(int j=1;j<i;j++){
-          if(i%j==0){
-            x++;
-          }
-        }
-       if(x==1 && n%i==0){
-         fac++;
-         a[y]=i;
-         y++;
-         n=n/i;
-         i=i-1;
-       }
-         x=0;
-         
-     }
-   }
- return fac;
+
+float average(const int arr[],int n){
+	float sum=0.0;
+	for(int i=0;i<n;i++){
+		sum+=arr[i];
+	}
+	return sum/(float)n;
+}
+
+
+int mode(int arr[],int n){
+	int num,temp_num;
+	int count=0,temp_count=0;
+	// sort(arr,n);
+	int temp;
+	for(int i=0;i<n-1;i++){
+		for(int j=0;j<n-1;j++){
+			if(arr[j+1]<arr[j]){
+				temp=arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=temp;
+			}
+		}
+	}
+	temp_num=arr[0];
+	for(int i=0;i<n;i++){
+		if(arr[i]==temp_num){
+			temp_count++;
+		}
+		else{
+			if(temp_count>count){
+				count=temp_count;
+				num=temp_num;
+			}
+			temp_num=arr[i];
+			temp_count=1;
+		}
+	}
+	if(temp_count>count){
+		count=temp_count;
+		num=temp_num;
+	}
+	return num;
+}
+
+
+
+int factors(int num,int arr[]){
+	int prime=2,ref=0;
+	int count=0,index=0;
+	while(num!=1){
+		if(num%prime==0){
+			num=num/prime;
+			count++;
+			arr[index]=prime;
+			index++;
+		}
+		else{
+			while(1){
+				prime++;
+				for(int j=2;j<prime;j++){
+					if(prime%j==0)
+						ref++;
+				}
+				if(ref==0){
+					break;
+				}
+				else{
+					ref=0;
+				}
+			}
+		}
+	}
+	return count;
 }
