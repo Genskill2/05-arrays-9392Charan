@@ -20,7 +20,7 @@ int min(int number[] , int size){
 }
 float Average(int a[], int n){
    float avg=0.0;
-   int sum=0;
+   float sum=0.0;
    for (int i=0;i<n;++i){
       sum+=a[i];
      }
