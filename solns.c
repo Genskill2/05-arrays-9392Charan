@@ -1,21 +1,21 @@
 /* Enter your solutions in this file */
 #include <stdio.h>
 
-int max(const int num[],int n){
-	int Max=num[0];
+int max(const int arr[],int n){
+	int Max=arr[0];
 	for(int i=0;i<n;i++){
-		if(num[i]>Max){
-			Max=num[i];
+		if(arr[i]>Max){
+			Max=arr[i];
 		}
 	}
 	return Max;
 }
 
-int min(const int num[],int n){
-	int Min=num[0];
+int min(const int arr[],int n){
+	int Min=arr[0];
 	for(int i=0;i<n;i++){
-		if(num[i]<Min){
-			Min=num[i];
+		if(arr[i]<Min){
+			Min=arr[i];
 		}
 	}
 	return Min;
