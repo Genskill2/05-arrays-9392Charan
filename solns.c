@@ -5,7 +5,7 @@ int max(int number[] , int size){
   For(int i=1;i<=1;i++)
     If(number[i]>max)
       {
-        number[i]=max;
+        max=number[i];
       }
      Return max;
 }
@@ -14,7 +14,7 @@ int min(int number[] , int size){
   For(int i=1;i<=1;i++)
     If(number[i]<min)
       {
-        number[i]=min;
+        min=number[i];
       }
      Return min;
 }
